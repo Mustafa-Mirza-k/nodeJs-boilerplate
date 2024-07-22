@@ -1,10 +1,11 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, response, Response } from "express";
 import repository from "../../repository";
 import Users from "../models/users";
 import { successResponse } from "../../helper/response.decorator";
 import { statusMessages } from "../../utils/statusMessages";
 import { ApiError } from "../../utils/apiError";
 import { comparePassword } from "../../utils/security";
+import { generateToken } from "../../helper/jwt.token";
 
 const authController = {
   login: (req: Request, res: Response, next: NextFunction) => {
@@ -44,7 +45,22 @@ const loginUser = async (req: Request, res: Response, next: NextFunction) => {
 
     delete data.dataValues.password;
 
-    return res.status(200).send(successResponse<Users>(data));
+    const token = await generateToken(
+      {
+        id: data.dataValues.id,
+        username: data.dataValues.username,
+      },
+      "1d"
+    );
+
+    const response = {
+      id: data.dataValues.id,
+      username: data.dataValues.username,
+      email: data.dataValues.email,
+      token,
+    };
+
+    return res.status(200).send(successResponse<typeof response>(response));
   } catch (e) {
     next(e);
   }
