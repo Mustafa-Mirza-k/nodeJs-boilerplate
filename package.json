@@ -1,0 +1,43 @@
+{
+  "name": "node-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "local": "SET NODE_ENV=local & nodemon  src/index.ts ",
+    "dev": " SET NODE_ENV=development & node src/index.ts ",
+    "prod": " SET NODE_ENV=production & node src/index.ts ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mustafa Mirza",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.17",
+    "@types/crypto-js": "^4.2.2",
+    "@types/express": "^4.17.21",
+    "@types/html-pdf-node": "^1.0.2",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.14.11",
+    "@types/nodemailer": "^6.4.15",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "@sequelize/mysql": "^7.0.0-alpha.41",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "html-pdf-node": "^1.0.8",
+    "i": "^0.3.7",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.10.3",
+    "nodemailer": "^6.9.14",
+    "nodemon": "^3.1.4",
+    "npm": "^10.8.2",
+    "sequelize": "^6.37.3",
+    "ts-node": "^10.9.2"
+  }
+}
